@@ -15,14 +15,7 @@ from rest_framework.views import APIView
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    authentication_classes = (TokenAuthentication, )
-    permission_classes = (IsAuthenticated, )
-
-    @action(detail=True, methods=['GET'])
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            return []
-        return super().get_permissions()
+    permission_classes = (AllowAny, )
 
 
     def set_user(self, serializer):

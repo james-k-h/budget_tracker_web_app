@@ -34,6 +34,10 @@ function HomeDashboard() {
   var _ = require("lodash");
 
   useEffect(() => {
+    if (!token["mr-token"]) window.location.href = "/";
+  }, [token]);
+  
+  useEffect(() => {
     setUser(_data);
   }, [_data]);
 
